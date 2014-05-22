@@ -12,7 +12,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [Parse setApplicationId:@"0CGZP6AznVgMrmS7tBRGu9JmYWE3UrEzlhiVSoJK"
+                  clientKey:@"GTwVN1KMd8FxI6GTJoAhWDcTi9omMUapdouJlKmf"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFFCC66)];
+    }else {
+        [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0xFFCC66)];
+    }
+    
     return YES;
 }
 							
