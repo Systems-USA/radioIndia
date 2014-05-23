@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Station.h"
 
 @interface StationCell : PFTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblCity;
 @property (weak, nonatomic) IBOutlet UIButton *btnFavorite;
-@property (weak, nonatomic) IBOutlet PFImageView *imgImage;
-@property (strong, nonatomic) Station * station;
+//@property (weak, nonatomic) IBOutlet PFImageView *imgImage;
+//@property (strong, nonatomic) Station * station;
 
 @end

@@ -14,11 +14,12 @@
 @property (strong,nonatomic) NSMutableArray * stations;
 @property int selectedStation;
 
-//-(Station*)currentStation;
+-(id)init;
 -(void)playCurrentStation;
+-(void)pauseCurrentStation;
 -(void)addStation:(Station*)station;
 -(void)playNextStation;
 -(void)playPreviousStation;
--(void)flushList;
+-(void)stopAllStations;
 
 @end

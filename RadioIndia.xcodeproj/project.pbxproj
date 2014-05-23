@@ -206,9 +206,9 @@
 		79F7FD1D19284A0F002A3DEA /* RadioIndia */ = {
 			isa = PBXGroup;
 			children = (
-				7926A65E192E4188005B5C98 /* Model */,
 				79C3A6BE192C277400C16FE7 /* PlayerViewController.h */,
 				79C3A6BF192C277400C16FE7 /* PlayerViewController.m */,
+				7926A65E192E4188005B5C98 /* Model */,
 				79F7FD7219285FA1002A3DEA /* Stations */,
 				796004D5192AA31300EAE4B2 /* Images */,
 				79F7FD2619284A0F002A3DEA /* AppDelegate.h */,

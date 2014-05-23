@@ -13,9 +13,11 @@
 
 @property (nonatomic,strong) NSString * name;
 @property (nonatomic,strong) NSString * city;
-@property (nonatomic,strong) PFFile * imageFile;
+//@property (nonatomic,strong) PFFile * imageFile;
 @property (nonatomic,strong) AVPlayer * player;
 
--(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url ImageFile:(PFFile*)imageFile;
+//-(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url ImageFile:(PFFile*)imageFile;
+
+-(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url;
 
 @end

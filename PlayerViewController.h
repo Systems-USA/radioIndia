@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Station.h"
+#import "StationList.h"
 
 @interface PlayerViewController : UIViewController
 
-@property (nonatomic,strong) Station * station;
+@property (nonatomic,strong) StationList * stationList;
 
 @end

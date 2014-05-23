@@ -10,7 +10,7 @@
 
 @implementation Station
 
--(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url ImageFile:(PFFile*)imageFile
+/*-(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url ImageFile:(PFFile*)imageFile
 {
     self = [super init];
     if (self) {
@@ -18,6 +18,17 @@
         self.city = city;
         self.player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:url]];
         self.imageFile = imageFile;
+    }
+    return self;
+}*/
+
+-(id)initWithName:(NSString *)name City:(NSString *)city Url:(NSString*)url
+{
+    self = [super init];
+    if (self) {
+        self.name = name;
+        self.city = city;
+        self.player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:url]];
     }
     return self;
 }

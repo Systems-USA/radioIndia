@@ -16,12 +16,12 @@
                   clientKey:@"GTwVN1KMd8FxI6GTJoAhWDcTi9omMUapdouJlKmf"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    /*NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFFCC66)];
     }else {
         [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0xFFCC66)];
-    }
+    }*/
     
     return YES;
 }

@@ -9,9 +9,12 @@
 #import "StationsTableViewController.h"
 #import "StationCell.h"
 #import "Station.h"
+#import "StationList.h"
 #import "PlayerViewController.h"
 
 @interface StationsTableViewController ()
+
+@property StationList * stationList;
 
 @end
 
@@ -38,20 +41,18 @@
     return self;
 }
 
-/*
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
-    [query whereKey:@"ProvZip" containedIn:_userZips];
+    /*[query whereKey:@"ProvZip" containedIn:_userZips];
     [query whereKey:@"Service" containsString:_service];
-    [query whereKey:@"Type" containsString:_type];
+    [query whereKey:@"Type" containsString:_type];*/
     if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+        query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     }
-    [query orderByAscending:@"NetPaid"];
+    [query orderByAscending:@"name"];
     return query;
 }
-*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"StationCell";
@@ -61,16 +62,19 @@
         cell = [[StationCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"] ImageFile:[object objectForKey:@"image"]];
+    //Station* station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"] ImageFile:[object objectForKey:@"image"]];
+    
+    Station* station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"]];
     
     // Configure the cell
-    cell.lblName.text = cell.station.name;
+    cell.lblName.text = station.name;
+    cell.lblCity.text = station.city;
+    //cell.imgImage.image = [UIImage imageNamed:@"cities.png"];
+    //cell.imgImage.file = station.imageFile;
+    //[cell.imgImage loadInBackground];
     
-    cell.lblCity.text = cell.station.city;
-    
-    cell.imgImage.image = [UIImage imageNamed:@"cities.png"];
-    cell.imgImage.file = cell.station.imageFile;
-    [cell.imgImage loadInBackground];
+    //Add station to StationList
+    [self.stationList addStation:station];
     
     return cell;
 }
@@ -83,21 +87,16 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath * selectedRow = [self.tableView indexPathForSelectedRow];
-    StationCell * stationRow = (StationCell *) [self.tableView cellForRowAtIndexPath:selectedRow];
     PlayerViewController * destinationViewController = segue.destinationViewController;
     
-    destinationViewController.station = stationRow.station;
+    self.stationList.selectedStation = selectedRow.row;
+    destinationViewController.stationList = self.stationList;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.stationList = [[StationList alloc] init];
 }
 
 - (void)didReceiveMemoryWarning

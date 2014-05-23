@@ -10,9 +10,25 @@
 
 @implementation StationList
 
+-(id)init
+{
+    self = [super init];
+    if(self)
+    {
+        self.stations = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 -(void)playCurrentStation
 {
+    [self stopAllStations];
     [[[self.stations objectAtIndex:self.selectedStation] player] play];
+}
+
+-(void)pauseCurrentStation
+{
+    [[[self.stations objectAtIndex:self.selectedStation] player] pause];
 }
 
 -(void)addStation:(Station*)station
@@ -22,35 +38,39 @@
 
 -(void)playNextStation
 {
-    int selSt = self.selectedStation ++;
-    if(selSt < 0)
+    [self pauseCurrentStation];
+    self.selectedStation ++;
+    if(self.selectedStation < 0)
     {
-        selSt = (int)[self.stations count]; //[[NSNumber numberWithDouble:[self.stations count]] intValue];
+        self.selectedStation = (int)[self.stations count]; //[[NSNumber numberWithDouble:[self.stations count]] intValue];
     }
-    else if(selSt > [self.stations count])
+    else if(self.selectedStation > [self.stations count]-1)
     {
-        selSt = 0;
+        self.selectedStation = 0;
     }
-    [[[self.stations objectAtIndex:selSt] player] play];
+    [self playCurrentStation];
 }
 
 -(void)playPreviousStation
 {
-    int selSt = self.selectedStation --;
-    if(selSt < 0)
+    [self pauseCurrentStation];
+    self.selectedStation --;
+    if(self.selectedStation < 0)
     {
-        selSt = (int)[self.stations count]; //[[NSNumber numberWithDouble:[self.stations count]] intValue];
+        self.selectedStation = (int)[self.stations count]-1; //[[NSNumber numberWithDouble:[self.stations count]] intValue];
     }
-    else if(selSt > [self.stations count])
+    else if(self.selectedStation > [self.stations count])
     {
-        selSt = 0;
+        self.selectedStation = 0;
     }
-    [[[self.stations objectAtIndex:selSt] player] play];
+    [self playCurrentStation];
 }
 
--(void)flushList
+-(void)stopAllStations
 {
-    [self.stations removeAllObjects];
+    [self.stations enumerateObjectsUsingBlock:^(Station* object, NSUInteger idx, BOOL *stop) {
+        [object.player pause];
+    }];
 }
 
 @end
