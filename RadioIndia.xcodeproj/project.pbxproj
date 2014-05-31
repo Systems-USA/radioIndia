@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7926A661192E4266005B5C98 /* StationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926A660192E4266005B5C98 /* StationList.m */; };
+		7926A664192F1E0B005B5C98 /* GenreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7926A663192F1E0B005B5C98 /* GenreTableViewController.m */; };
+		79422FEE192F54E5006684FC /* CitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79422FED192F54E5006684FC /* CitiesTableViewController.m */; };
+		79422FF2192F5755006684FC /* CityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79422FF1192F5755006684FC /* CityCell.m */; };
+		79422FFC19310821006684FC /* CityStationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79422FFB19310821006684FC /* CityStationsTableViewController.m */; };
 		796004C7192A4E3C00EAE4B2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796004C6192A4E3B00EAE4B2 /* Parse.framework */; };
 		796004CB192A56B700EAE4B2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796004CA192A56B700EAE4B2 /* MobileCoreServices.framework */; };
 		796004CD192A56C200EAE4B2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796004CC192A56C200EAE4B2 /* CFNetwork.framework */; };
@@ -62,6 +66,14 @@
 /* Begin PBXFileReference section */
 		7926A65F192E4266005B5C98 /* StationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationList.h; path = ../StationList.h; sourceTree = "<group>"; };
 		7926A660192E4266005B5C98 /* StationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationList.m; path = ../StationList.m; sourceTree = "<group>"; };
+		7926A662192F1E0B005B5C98 /* GenreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreTableViewController.h; sourceTree = "<group>"; };
+		7926A663192F1E0B005B5C98 /* GenreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreTableViewController.m; sourceTree = "<group>"; };
+		79422FEC192F54E5006684FC /* CitiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitiesTableViewController.h; sourceTree = "<group>"; };
+		79422FED192F54E5006684FC /* CitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesTableViewController.m; sourceTree = "<group>"; };
+		79422FF0192F5755006684FC /* CityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCell.h; sourceTree = "<group>"; };
+		79422FF1192F5755006684FC /* CityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCell.m; sourceTree = "<group>"; };
+		79422FFA19310821006684FC /* CityStationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityStationsTableViewController.h; path = ../CityStationsTableViewController.h; sourceTree = "<group>"; };
+		79422FFB19310821006684FC /* CityStationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityStationsTableViewController.m; path = ../CityStationsTableViewController.m; sourceTree = "<group>"; };
 		796004C6192A4E3B00EAE4B2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		796004C8192A53F800EAE4B2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		796004CA192A56B700EAE4B2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -152,6 +164,28 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		7926A665192F1E13005B5C98 /* Genre */ = {
+			isa = PBXGroup;
+			children = (
+				7926A662192F1E0B005B5C98 /* GenreTableViewController.h */,
+				7926A663192F1E0B005B5C98 /* GenreTableViewController.m */,
+			);
+			name = Genre;
+			sourceTree = "<group>";
+		};
+		79422FEF192F5668006684FC /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				79422FEC192F54E5006684FC /* CitiesTableViewController.h */,
+				79422FED192F54E5006684FC /* CitiesTableViewController.m */,
+				79422FF0192F5755006684FC /* CityCell.h */,
+				79422FF1192F5755006684FC /* CityCell.m */,
+				79422FFA19310821006684FC /* CityStationsTableViewController.h */,
+				79422FFB19310821006684FC /* CityStationsTableViewController.m */,
+			);
+			name = Cities;
+			sourceTree = "<group>";
+		};
 		796004D5192AA31300EAE4B2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +243,9 @@
 				79C3A6BE192C277400C16FE7 /* PlayerViewController.h */,
 				79C3A6BF192C277400C16FE7 /* PlayerViewController.m */,
 				7926A65E192E4188005B5C98 /* Model */,
+				7926A665192F1E13005B5C98 /* Genre */,
 				79F7FD7219285FA1002A3DEA /* Stations */,
+				79422FEF192F5668006684FC /* Cities */,
 				796004D5192AA31300EAE4B2 /* Images */,
 				79F7FD2619284A0F002A3DEA /* AppDelegate.h */,
 				79F7FD2719284A0F002A3DEA /* AppDelegate.m */,
@@ -395,7 +431,11 @@
 				79C3A6BB192B1F7400C16FE7 /* Station.m in Sources */,
 				7926A661192E4266005B5C98 /* StationList.m in Sources */,
 				79F7FD7119285F8F002A3DEA /* StationsTableViewController.m in Sources */,
+				79422FFC19310821006684FC /* CityStationsTableViewController.m in Sources */,
 				796004D2192A7B5200EAE4B2 /* StationCell.m in Sources */,
+				79422FEE192F54E5006684FC /* CitiesTableViewController.m in Sources */,
+				79422FF2192F5755006684FC /* CityCell.m in Sources */,
+				7926A664192F1E0B005B5C98 /* GenreTableViewController.m in Sources */,
 				79F7FD2419284A0F002A3DEA /* main.m in Sources */,
 				79C3A6C0192C277400C16FE7 /* PlayerViewController.m in Sources */,
 			);
