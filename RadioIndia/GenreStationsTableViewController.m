@@ -1,24 +1,23 @@
 //
-//  StationsTableViewController.m
+//  GenreStationsTableViewController.m
 //  RadioIndia
 //
-//  Created by Pepe Ramirez on 17/05/14.
+//  Created by Pepe Ramirez on 30/05/14.
 //  Copyright (c) 2014 Systems USA. All rights reserved.
 //
 
-#import "StationsTableViewController.h"
+#import "GenreStationsTableViewController.h"
 #import "StationCell.h"
 #import "Station.h"
-#import "StationList.h"
 #import "PlayerViewController.h"
 
-@interface StationsTableViewController ()
+@interface GenreStationsTableViewController ()
 
 @property StationList * stationList;
 
 @end
 
-@implementation StationsTableViewController
+@implementation GenreStationsTableViewController
 
 -  (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -27,7 +26,7 @@
         // Custom the table
         
         // The className to query on
-        self.parseClassName = @"Station";
+        self.parseClassName = @"Genre";
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -44,18 +43,16 @@
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
-    /*[query whereKey:@"ProvZip" containedIn:_userZips];
-    [query whereKey:@"Service" containsString:_service];
-    [query whereKey:@"Type" containsString:_type];*/
+    [query whereKey:@"genre" equalTo:self.genre];
     if ([self.objects count] == 0) {
         query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     }
-    [query orderByAscending:@"name"];
+    [query orderByAscending:@"genre"];
     return query;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    static NSString *CellIdentifier = @"StationCell";
+    static NSString *CellIdentifier = @"GenreStationCell";
     
     StationCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -68,7 +65,7 @@
     
     // Configure the cell
     cell.lblName.text = station.name;
-    cell.lblCity.text = station.city;
+    cell.lblCity.text = @""; //station.city;
     //cell.imgImage.image = [UIImage imageNamed:@"cities.png"];
     //cell.imgImage.file = station.imageFile;
     //[cell.imgImage loadInBackground];
@@ -81,7 +78,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"stationsSegue" sender:self];
+    [self performSegueWithIdentifier:@"genreStationsSegue" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

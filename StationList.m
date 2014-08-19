@@ -15,6 +15,10 @@
     self = [super init];
     if(self)
     {
+        // Register observer to be notified when download of data is complete
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(pauseCurrentStation)
+                                                     name:@"PlayerInstantiated" object:nil];
         self.stations = [[NSMutableArray alloc] init];
     }
     return self;
@@ -23,12 +27,12 @@
 -(void)playCurrentStation
 {
     [self stopAllStations];
-    [[[self.stations objectAtIndex:self.selectedStation] player] play];
+    [[self.stations objectAtIndex:self.selectedStation] playStation];
 }
 
 -(void)pauseCurrentStation
 {
-    [[[self.stations objectAtIndex:self.selectedStation] player] pause];
+    [[self.stations objectAtIndex:self.selectedStation] pauseStation];
 }
 
 -(void)addStation:(Station*)station
@@ -71,6 +75,11 @@
     [self.stations enumerateObjectsUsingBlock:^(Station* object, NSUInteger idx, BOOL *stop) {
         [object.player pause];
     }];
+}
+
+-(BOOL)isStationCurrentlyPlaying
+{
+    return [[self.stations objectAtIndex:self.selectedStation] isCurrentlyPlaying];
 }
 
 @end

@@ -62,7 +62,7 @@
     
     //Station* station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"] ImageFile:[object objectForKey:@"image"]];
     
-    Station* station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"]];
+    Station* station = [[Station alloc] initWithName:[object objectForKey:@"name"] City:[object objectForKey:@"city"] Url:[object objectForKey:@"url"] Genre:[object objectForKey:@"genre"]];
     
     // Configure the cell
     cell.lblName.text = station.name;
@@ -87,7 +87,7 @@
     NSIndexPath * selectedRow = [self.tableView indexPathForSelectedRow];
     PlayerViewController * destinationViewController = segue.destinationViewController;
     
-    self.stationList.selectedStation = selectedRow.row;
+    self.stationList.selectedStation = (int) selectedRow.row;
     destinationViewController.stationList = self.stationList;
 }
 

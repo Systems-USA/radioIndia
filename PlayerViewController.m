@@ -20,11 +20,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PlayerInstantiated" object:nil];
     [self ibaPlayTapped:self.btnPlay];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self updateUI];
+}
+
+-(void)updateUI
+{
+    if([self.stationList isStationCurrentlyPlaying])
+    {
+        self.btnPlay.selected = YES;
+    }else
+    {
+        self.btnPlay.selected = NO;
+    }
+}
+
 - (IBAction)ibaPlayTapped:(UIButton *)sender {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PlayerInstantiated" object:nil];
     if(!sender.selected)
     {
         [self.stationList playCurrentStation];
@@ -44,6 +61,5 @@
 - (IBAction)btnPrev:(UIButton *)sender {
     [self.stationList playPreviousStation];
 }
-
 
 @end

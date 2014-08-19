@@ -21,5 +21,6 @@
 -(void)playNextStation;
 -(void)playPreviousStation;
 -(void)stopAllStations;
+-(BOOL)isStationCurrentlyPlaying;
 
 @end
